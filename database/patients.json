@@ -7,9 +7,9 @@
             "age": 9,
             "dateOfBirth": "26/08/2013",
             "gender": "female",
-            "diagnosis": "Type 1 Diabetes",
+            "diagnosis": "type1",
             "covid": false,
-            "glucose levels": [
+            "glucoseLevels": [
                 {
                     "date": "22/04/2023",
                     "time": "09:00",
@@ -23,7 +23,14 @@
             ],
             "appointments": [
                 {
+                    "id": 1,
                     "date": "23/04/2023",
+                    "time": "11:00",
+                    "doctor": "Doctor Doctor"
+                },
+                {
+                    "id": 3,
+                    "date": "30/04/2023",
                     "time": "11:00",
                     "doctor": "Doctor Doctor"
                 }
@@ -36,9 +43,9 @@
             "age": 57,
             "dateOfBirth": "01/03/1966",
             "gender": "male",
-            "diagnosis": "Type 2 Diabetes",
+            "diagnosis": "type2",
             "covid": true,
-            "glucose levels": [
+            "glucoseLevels": [
                 {
                     "date": "22/04/2023",
                     "time": "09:00",
@@ -52,6 +59,7 @@
             ],
             "appointments": [
                 {
+                    "id": 2,
                     "date": "23/04/2023",
                     "time": "15:00",
                     "doctor": "Doctor Doctor"

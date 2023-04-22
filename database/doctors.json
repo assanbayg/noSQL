@@ -6,19 +6,27 @@
             "surname": "Doctor",
             "gender": "male",
             "workExperience": 6,
-            "fieldOfStudies": [
+            "fieldsOfStudy": [
                 "diabetes"
             ],
             "appointments": [
                 {
+                    "id": 1,
                     "date": "23/04/2023",
                     "time": "11:00",
                     "patient": "Venera Bolatbek"
                 },
                 {
+                    "id": 2,
                     "date": "23/04/2023",
                     "time": "15:00",
                     "patient": "Akhmed Bolatkhan"
+                },
+                {
+                    "id": 3,
+                    "date": "30/04/2023",
+                    "time": "11:00",
+                    "patient": "Venera Bolatbek"
                 }
             ]
         }

@@ -1,0 +1,62 @@
+{
+    "patients": [
+        {
+            "id": 1,
+            "name": "Venera",
+            "surname": "Bolatbek",
+            "age": 9,
+            "dateOfBirth": "26/08/2013",
+            "gender": "female",
+            "diagnosis": "Type 1 Diabetes",
+            "covid": false,
+            "glucose levels": [
+                {
+                    "date": "22/04/2023",
+                    "time": "09:00",
+                    "level": 9.9
+                },
+                {
+                    "date": "22/04/2023",
+                    "time": "10:00",
+                    "level": 14.0
+                }
+            ],
+            "appointments": [
+                {
+                    "date": "23/04/2023",
+                    "time": "11:00",
+                    "doctor": "Doctor Doctor"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Akhmed",
+            "surname": "Bolatkhan",
+            "age": 57,
+            "dateOfBirth": "01/03/1966",
+            "gender": "male",
+            "diagnosis": "Type 2 Diabetes",
+            "covid": true,
+            "glucose levels": [
+                {
+                    "date": "22/04/2023",
+                    "time": "09:00",
+                    "level": 7.5
+                },
+                {
+                    "date": "22/04/2023",
+                    "time": "10:00",
+                    "level": 5.5
+                }
+            ],
+            "appointments": [
+                {
+                    "date": "23/04/2023",
+                    "time": "15:00",
+                    "doctor": "Doctor Doctor"
+                }
+            ]
+        }
+    ]
+}

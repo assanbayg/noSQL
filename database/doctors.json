@@ -1,0 +1,26 @@
+{
+    "doctors": [
+        {
+            "id": 1,
+            "name": "Doctor",
+            "surname": "Doctor",
+            "gender": "male",
+            "workExperience": 6,
+            "fieldOfStudies": [
+                "diabetes"
+            ],
+            "appointments": [
+                {
+                    "date": "23/04/2023",
+                    "time": "11:00",
+                    "patient": "Venera Bolatbek"
+                },
+                {
+                    "date": "23/04/2023",
+                    "time": "15:00",
+                    "patient": "Akhmed Bolatkhan"
+                }
+            ]
+        }
+    ]
+}

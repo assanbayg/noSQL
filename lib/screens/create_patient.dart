@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -20,8 +21,8 @@ class _CreatePatientScreenState extends State<CreatePatientScreen> {
   final TextEditingController _nameEditingController = TextEditingController();
   final TextEditingController _surnameEditingController =
       TextEditingController();
-  final DateTime today = DateTime.now();
-  DateTime date = DateTime.now();
+  final TextEditingController _ageTextEditingController =
+      TextEditingController();
   String _gender = 'male';
   bool _covid = false;
   Diagnosis _diagnosis = Diagnosis.none;
@@ -39,7 +40,7 @@ class _CreatePatientScreenState extends State<CreatePatientScreen> {
         .toList();
     patients.add(patient);
     final String updatedJson =
-        jsonEncode(patients.map((entry) => patient.toJson()).toList());
+        jsonEncode(patients.map((entry) => entry.toJson()).toList());
     file.writeAsStringSync(updatedJson);
     print(updatedJson);
   }
@@ -96,29 +97,6 @@ class _CreatePatientScreenState extends State<CreatePatientScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Date of Birth'),
-                    TextButton(
-                      onPressed: () async {
-                        DateTime? pickedDate = await showDatePicker(
-                          context: context,
-                          initialDate: today,
-                          firstDate: DateTime(1900),
-                          lastDate: today,
-                        );
-
-                        if (pickedDate != null) {
-                          setState(() {
-                            date = pickedDate;
-                          });
-                        }
-                      },
-                      child: const Text('Choose'),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
                     const Text('Covid'),
                     Checkbox(
                       value: _covid,
@@ -150,31 +128,35 @@ class _CreatePatientScreenState extends State<CreatePatientScreen> {
                         }),
                   ],
                 ),
-                Text(DateFormat('dd/MM/yyyy').format(date)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Age'),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      child: TextField(
+                        controller: _ageTextEditingController,
+                        keyboardType: TextInputType.number,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
             ElevatedButton(
               onPressed: () async {
-                if (date == today) {
+                if (_ageTextEditingController.text == '') {
                   return;
-                }
-                int age = today.year - date.year;
-                if (date.month > today.month ||
-                    (date.month == today.month && date.day > today.day)) {
-                  age--;
                 }
                 final Patient patient = Patient(
                   name: _nameEditingController.text,
                   surname: _surnameEditingController.text,
                   gender: _gender.toString(),
-                  dateOfBirth: DateFormat('dd/MM/yyyy').format(date),
-                  age: age,
+                  age: int.parse(_ageTextEditingController.text),
                   covid: _covid,
                   diagnosis: _diagnosis.name.toString(),
-                  //id: Provider.of<Id>(context).nextPatientId(),
-                  id: 9,
+                  id: Random().nextInt(10000000),
                   appointments: [],
-                  glucoseLevels: [],
                 );
 
                 createPatient(patient);

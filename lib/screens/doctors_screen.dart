@@ -30,8 +30,6 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
             .map(
               (ap) => Appointment(
                 id: ap['id'],
-                date: DateFormat('dd/mm/yyyy').parse(ap['date']),
-                time: DateFormat('HH:mm').parse(ap['time']),
                 patientName: ap['patient'],
                 doctorName: ap['patient'],
               ),

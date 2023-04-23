@@ -63,21 +63,25 @@ class _PatientCardState extends State<PatientCard> {
                           await getApplicationDocumentsDirectory();
                       final path = '${directory.path}/database';
                       final file = File(path);
-
                       final String data =
                           await rootBundle.loadString('database/patients.json');
                       final jsonResult = json.decode(data);
                       List<dynamic> patients = jsonResult['patients'];
                       int index = patients
                           .indexWhere((p) => p['id'] == widget.patient.id);
-                      patients[index].age =
+                      patients[index]['age'] =
                           int.parse(_ageTextEditingController.text);
                       final updatedPatients = {'patients': patients};
                       final updatedJson = json.encode(updatedPatients);
                       file.writeAsStringSync(updatedJson);
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text(updatedJson)));
-                      Navigator.of(context).pop();
+                      Navigator.pop(context);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(updatedJson)),
+                      );
+                      setState(() {
+                        widget.patient.age =
+                            int.parse(_ageTextEditingController.text);
+                      });
                     },
                     child: const Text('OK'),
                   ),

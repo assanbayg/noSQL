@@ -1,16 +1,8 @@
 # no_sql
+Это NoSQL база данных написанная на Flutter. В папке database находятся два файла json - doctors, patients. В файле patients_screen.dart происходит чтение данных. Если нажать на кнопку, то нас переносит на экран, где можно создавать нового пациента - и у него само собой будет пустое количество записей к врачу (логично).
 
-A new Flutter project.
+Если нажать на иконку с ведром - удаляется пациент. Если нажать на карандаш - можно редактировать его возраст.
 
-## Getting Started
+После CUD операций выходит сообщение, где выводится json file - patients.json.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+К сожалению, не получилось менять файлы на машине, лишь во время запуска программы.

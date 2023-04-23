@@ -3,11 +3,8 @@ import 'dart:io';
 import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:provider/provider.dart';
 
-import '../providers/id.dart';
 import '../models/patient.dart';
 
 class CreatePatientScreen extends StatefulWidget {
@@ -23,14 +20,14 @@ class _CreatePatientScreenState extends State<CreatePatientScreen> {
       TextEditingController();
   final TextEditingController _ageTextEditingController =
       TextEditingController();
+
   String _gender = 'male';
   bool _covid = false;
   Diagnosis _diagnosis = Diagnosis.none;
 
   void createPatient(Patient patient) async {
     final directory = await getApplicationDocumentsDirectory();
-    print(directory);
-    final path = '${directory.path}/database/patients.json';
+    final path = '${directory.path}/database';
     final file = File(path);
 
     final String data = await rootBundle.loadString('database/patients.json');
@@ -42,6 +39,8 @@ class _CreatePatientScreenState extends State<CreatePatientScreen> {
     final String updatedJson =
         jsonEncode(patients.map((entry) => entry.toJson()).toList());
     file.writeAsStringSync(updatedJson);
+    ScaffoldMessenger.of(context) //shows updated JSON filek
+        .showSnackBar(SnackBar(content: Text(updatedJson)));
     print(updatedJson);
   }
 
@@ -160,7 +159,6 @@ class _CreatePatientScreenState extends State<CreatePatientScreen> {
                 );
 
                 createPatient(patient);
-                Navigator.of(context).pop();
               },
               child: const Text('Create'),
             ),

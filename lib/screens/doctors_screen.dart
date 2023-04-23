@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
 import '../models/appointment.dart';
 import '../widgets/doctor_card.dart';
 import '../models/doctor.dart';

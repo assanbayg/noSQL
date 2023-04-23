@@ -1,4 +1,3 @@
-import 'package:intl/intl.dart';
 import 'package:no_sql/models/appointment.dart';
 
 enum Diagnosis {

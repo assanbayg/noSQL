@@ -6,7 +6,6 @@ class Doctor {
   String surname;
   String gender;
   int workExperience;
-  List<String> fieldsOfStudy;
   List<Appointment> appointments;
 
   Doctor({
@@ -15,7 +14,6 @@ class Doctor {
     required this.surname,
     required this.gender,
     required this.workExperience,
-    required this.fieldsOfStudy,
     required this.appointments,
   });
 }

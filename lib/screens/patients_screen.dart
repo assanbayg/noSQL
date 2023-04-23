@@ -1,9 +1,8 @@
 import 'dart:convert';
-import 'package:intl/intl.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:no_sql/screens/create_patient.dart';
 import '../models/patient.dart';
-import '../models/appointment.dart';
 import '../widgets/patient_card.dart';
 
 class PatientsScreen extends StatefulWidget {
@@ -16,41 +15,15 @@ class PatientsScreen extends StatefulWidget {
 class _PatientsScreenState extends State<PatientsScreen> {
   List<Patient> patients = [];
 
+  //fetch content from patients.json
   Future<void> loadPatients() async {
-    String data = await rootBundle.loadString('database/patients.json');
-    dynamic jsonResult = json.decode(data);
-    patients = (jsonResult['patients'] as List).map((p) {
-      return Patient(
-        id: p['id'],
-        name: p['name'],
-        surname: p['surname'],
-        age: p['age'],
-        dateOfBirth: DateFormat('dd/mm/yyyy').parse(p['dateOfBirth']),
-        gender: p['gender'],
-        covid: p['covid'],
-        diagnosis: p['diagnosis'],
-        glucoseLevels: (p['glucoseLevels'] as List).map(
-          (level) {
-            return GlucoseLevel(
-              date: DateFormat('dd/mm/yyyy').parse(level['date']),
-              time: DateFormat('HH:mm').parse(level['time']),
-              level: level['level'],
-            );
-          },
-        ).toList(),
-        appointments: (p['appointments'] as List)
-            .map(
-              (ap) => Appointment(
-                id: ap['id'],
-                date: DateFormat('dd/mm/yyyy').parse(ap['date']),
-                time: DateFormat('HH:mm').parse(ap['time']),
-                patientName: ap['doctor'],
-                doctorName: ap['doctor'],
-              ),
-            )
-            .toList(),
-      );
-    }).toList();
+    final String data = await rootBundle.loadString('database/patients.json');
+    final jsonResult = json.decode(data);
+    setState(() {
+      patients = (jsonResult['patients'] as List)
+          .map((p) => Patient.fromJson(p))
+          .toList();
+    });
   }
 
   @override
@@ -88,6 +61,13 @@ class _PatientsScreenState extends State<PatientsScreen> {
             ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const CreatePatientScreen()));
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }

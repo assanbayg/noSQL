@@ -26,7 +26,6 @@ class _DoctorsScreenState extends State<DoctorsScreen> {
         surname: d['surname'],
         gender: d['gender'],
         workExperience: d['workExperience'],
-        fieldsOfStudy: List<String>.from(d['fieldsOfStudy']),
         appointments: (d['appointments'] as List)
             .map(
               (ap) => Appointment(

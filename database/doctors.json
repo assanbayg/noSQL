@@ -6,9 +6,6 @@
             "surname": "Doctor",
             "gender": "male",
             "workExperience": 6,
-            "fieldsOfStudy": [
-                "diabetes"
-            ],
             "appointments": [
                 {
                     "id": 1,

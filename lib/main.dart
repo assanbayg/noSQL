@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'providers/id.dart';
+import 'package:provider/provider.dart';
 import 'screens/nav_bar.dart';
 
 void main() {
@@ -10,10 +12,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'no_sql',
-      theme: ThemeData(primarySwatch: Colors.teal),
-      home: const NavBar(),
+    return Provider(
+      create: (_) => Id(),
+      child: MaterialApp(
+        title: 'no_sql',
+        theme: ThemeData(primarySwatch: Colors.teal),
+        home: const NavBar(),
+      ),
     );
   }
 }

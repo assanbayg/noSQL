@@ -5,7 +5,6 @@
             "name": "Venera",
             "surname": "Bolatbek",
             "age": 9,
-            "dateOfBirth": "26/08/2013",
             "gender": "female",
             "diagnosis": "type1",
             "covid": false,
@@ -25,13 +24,27 @@
             "name": "Akhmed",
             "surname": "Bolatkhan",
             "age": 57,
-            "dateOfBirth": "01/03/1966",
             "gender": "male",
             "diagnosis": "type2",
             "covid": true,
             "appointments": [
                 {
                     "id": 2,
+                    "doctor": "Doctor Doctor"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Miras",
+            "surname": "Atabay",
+            "age": 19,
+            "gender": "male",
+            "diagnosis": "type1",
+            "covid": false,
+            "appointments": [
+                {
+                    "id": 4,
                     "doctor": "Doctor Doctor"
                 }
             ]
